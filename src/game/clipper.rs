@@ -33,6 +33,6 @@ impl ClipperManager {
     }
 
     pub fn buy_price(&self) -> f64 {
-        BASE_CLIPPER_PRICE + (1.1 as f64).powf(self.num_clippers as f64) - 1.0
+        BASE_CLIPPER_PRICE + (1.01 as f64).powf(self.num_clippers as f64) - 1.0
     }
 }

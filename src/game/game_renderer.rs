@@ -42,12 +42,12 @@ impl GameRenderer {
 
         let counter_text = Text::from(vec![
             Line::from(vec![
-                "Paper Clips: ".into(),
+                "Unsold Clips: ".into(),
                 game.num_paperclips().to_string().yellow(),
             ]),
             Line::from(vec![
                 "Money: ".into(),
-                format!("{:.2}", game.money()).to_string().yellow(),
+                format!("$ {:.2}", game.money()).to_string().yellow(),
             ]),
             Line::from(vec![
                 "Demand: ".into(),
@@ -55,7 +55,7 @@ impl GameRenderer {
             ]),
             Line::from(vec![
                 "Sell Price: ".into(),
-                format!("4 {:.2}", game.sell_price()).to_string().yellow(),
+                format!("$ {:.2}", game.sell_price()).to_string().yellow(),
             ]),
             Line::from(vec![
                 "Wire: ".into(),

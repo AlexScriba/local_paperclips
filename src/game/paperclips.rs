@@ -11,6 +11,7 @@ pub struct Game {
     clippers: ClipperManager,
     wire_manager: WireManager,
     purchase_modifier: f64,
+    demand_modifier: f64,
     rng: ThreadRng,
 }
 
@@ -98,7 +99,7 @@ impl Game {
             return;
         }
 
-        let purchase_amount = (self.paperclips as f64 * self.public_demand * 0.1).round() as u128;
+        let purchase_amount = (self.purchase_modifier * self.public_demand).round() as u128;
 
         let purchase_amount = purchase_amount.max(1);
 
@@ -111,7 +112,7 @@ impl Game {
     }
 
     fn calc_demand(&self, val: f64) -> f64 {
-        (10000.0 as f64).powf(-val + self.purchase_modifier)
+        (10000.0 as f64).powf(-val + self.demand_modifier)
     }
 }
 
@@ -122,7 +123,8 @@ impl Default for Game {
             paperclips: 0,
             sell_price: 0.2,
             public_demand: 1.0,
-            purchase_modifier: 0.1,
+            purchase_modifier: 100.0,
+            demand_modifier: 0.1,
             rng: rand::thread_rng(),
             clippers: ClipperManager::new(),
             wire_manager: WireManager::default(),
